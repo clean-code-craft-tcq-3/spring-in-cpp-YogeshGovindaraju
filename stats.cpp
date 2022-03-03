@@ -51,9 +51,7 @@ void StatsAlerter::checkAndAlert(const std::vector<double>& values)
     std::cout<<__func__<<" maximumValue:"<<maximumValue<<" maximumThreshold:"<<maximumThreshold<<std::endl;
     if(maximumValue > maximumThreshold)
     {
-        alerterInstance = alerter.at(EMAIL_ALERT);
-        alerterInstance->setEmailSentStatus(true);
-        alerterInstance = alerter.at(LED_ALERT);
-        alerterInstance->setLedGlowStatus(true);
+        (alerter.at(EMAIL_ALERT))->setEmailSentStatus(true);
+        (alerter.at(LED_ALERT))->setLedGlowStatus(true);
     }
 }
