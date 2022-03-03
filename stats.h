@@ -26,8 +26,8 @@ class IAlerter
         emailSent = false;
         ledGlows = false;
     }
-    virtual void setEmailSentStatus(bool emailSentStatus){};
-    virtual void setLedGlowStatus(bool ledGlowStatus){};
+    virtual void setEmailSentStatus(bool){};
+    virtual void setLedGlowStatus(bool){};
 };
 
 class EmailAlert: public IAlerter
@@ -48,7 +48,6 @@ class StatsAlerter
 {
     private:
     float maximumThreshold;
-    IAlerter *alerterInstance;
     std::vector<IAlerter*> alerter;
     
     public:
@@ -56,10 +55,6 @@ class StatsAlerter
     {
         maximumThreshold = maxThreshold;
         alerter = alerters;
-    }
-    ~StatsAlerter()
-    {
-        delete alerterInstance;
     }
     void checkAndAlert(const std::vector<double>& values);
 };
