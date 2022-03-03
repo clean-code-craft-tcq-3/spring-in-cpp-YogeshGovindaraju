@@ -13,9 +13,9 @@ TEST_CASE("reports average, minimum and maximum") {
 
 TEST_CASE("average is NaN for empty array") {
     auto computedStats = Statistics::ComputeStatistics({});
-    REQUIRE(isnan(computedStats.average));
-    REQUIRE(isnan(computedStats.max));
-    REQUIRE(isnan(computedStats.min));
+    REQUIRE(std::isnan(computedStats.average));
+    REQUIRE(std::isnan(computedStats.max));
+    REQUIRE(std::isnan(computedStats.min));
 }
 
 TEST_CASE("raises alerts when max is greater than threshold") {
@@ -28,5 +28,5 @@ TEST_CASE("raises alerts when max is greater than threshold") {
     statsAlerter.checkAndAlert({99.8, 34.2, 4.5, 6.7});
 
     REQUIRE(emailAlert.getEmailSentStatus());
-    REQUIRE(ledAlert.getLedGlowStatus);
+    REQUIRE(ledAlert.getLedGlowStatus());
 }
