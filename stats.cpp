@@ -1,7 +1,5 @@
 #include "stats.h"
 
-namespace std;
-
 Stats Statistics::ComputeStatistics(const std::vector<double>& numbers)
 {
     Stats StatisticsOfNumbers;
@@ -17,7 +15,7 @@ Stats Statistics::ComputeStatistics(const std::vector<double>& numbers)
         StatisticsOfNumbers.min = *min_element(numbers.begin(), numbers.end());
         StatisticsOfNumbers.max = *max_element(numbers.begin(), numbers.end());
         StatisticsOfNumbers.average = accumulate(numbers.begin(), numbers.end(), 0.0)/numbers.size();
-        cout<<__func__<<" min:"<<StatisticsOfNumbers.min<<" max:"<<StatisticsOfNumbers.max<<" average:"<<StatisticsOfNumbers.average<<endl;
+        std::cout<<__func__<<" min:"<<StatisticsOfNumbers.min<<" max:"<<StatisticsOfNumbers.max<<" average:"<<StatisticsOfNumbers.average<<std::endl;
     }
     
     return StatisticsOfNumbers;
@@ -25,32 +23,32 @@ Stats Statistics::ComputeStatistics(const std::vector<double>& numbers)
 
 bool EmailAlert::getEmailSentStatus()
 {
-    cout<<__func__<<" EmailSentStatus:"<<emailSent<<endl;
+    std::cout<<__func__<<" EmailSentStatus:"<<emailSent<<std::endl;
     return emailSent;
 }
 
 void EmailAlert::setEmailSentStatus(bool emailSentStatus)
 {
     emailSent = emailSentStatus;
-    cout<<__func__<<" EmailSentStatus:"<<emailSent<<endl;
+    std::cout<<__func__<<" EmailSentStatus:"<<emailSent<<std::endl;
 }
 
 bool LEDAlert::getLedGlowStatus()
 {
-    cout<<__func__<<" LedGlowStatus:"<<ledGlows<<endl;
+    std::cout<<__func__<<" LedGlowStatus:"<<ledGlows<<std::endl;
     return ledGlows;
 }
 
 void LEDAlert::setLedGlowStatus(bool ledGlowStatus)
 {
     ledGlows = ledGlowStatus;
-    cout<<__func__<<" LedGlowStatus:"<<ledGlows<<endl;
+    std::cout<<__func__<<" LedGlowStatus:"<<ledGlows<<std::endl;
 }
 
 void StatsAlerter::checkAndAlert(const std::vector<double>& values)
 {
     double maximumValue = *max_element(values.begin(), values.end());
-    cout<<__func__<<" maximumValue:"<<maximumValue<<" maximumThreshold:"<<maximumThreshold<<endl;
+    std::cout<<__func__<<" maximumValue:"<<maximumValue<<" maximumThreshold:"<<maximumThreshold<<std::endl;
     if(maximumValue > maximumThreshold)
     {
         alerterInstance = alerter.at(EMAIL_ALERT);
